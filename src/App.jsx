@@ -59,11 +59,11 @@ export default function App() {
             </div>
           </div>
 
-          <div className="relative z-10 order-1 flex w-full min-w-0 items-center justify-center lg:order-2 lg:absolute lg:inset-y-0 lg:right-0 lg:w-[52%] lg:justify-end">
+          <div className="relative z-10 order-1 flex w-full min-w-0 items-center justify-center lg:order-2 lg:absolute lg:inset-y-0 lg:right-0 lg:w-[48%] lg:justify-end">
             <img
               src="/hero.png"
               alt="Nexxo Digital website design showcase"
-              className="h-auto w-full max-w-sm object-contain sm:max-w-md md:max-w-xl lg:max-w-none lg:w-full lg:scale-105 lg:origin-right lg:[mask-image:linear-gradient(to_right,transparent_0%,black_28%,black_100%)]"
+              className="h-auto w-full max-w-sm object-contain sm:max-w-md md:max-w-xl lg:max-w-none lg:w-full lg:scale-100 lg:origin-right lg:[mask-image:linear-gradient(to_right,transparent_0%,black_28%,black_100%)]"
             />
           </div>
         </div>
