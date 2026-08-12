@@ -89,10 +89,44 @@ export default function PackageSlider({ packages }) {
 
   return (
     <div
-      className="relative mt-8 sm:mt-12"
+      className="relative mt-8 sm:mt-12 md:px-12"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
+      <button
+        type="button"
+        onClick={prev}
+        aria-label="Previous packages"
+        className={`${navBtnClass} absolute top-1/2 left-0 z-20 hidden -translate-y-1/2 md:flex`}
+      >
+        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
+          <path
+            d="M15 6 9 12l6 6"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </button>
+
+      <button
+        type="button"
+        onClick={next}
+        aria-label="Next packages"
+        className={`${navBtnClass} absolute top-1/2 right-0 z-20 hidden -translate-y-1/2 md:flex`}
+      >
+        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
+          <path
+            d="m9 6 6 6-6 6"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </button>
+
       <div
         ref={containerRef}
         className="touch-pan-y overflow-hidden"
@@ -140,7 +174,7 @@ export default function PackageSlider({ packages }) {
         </div>
       </div>
 
-      <div className="mt-4 flex items-center justify-between px-0 sm:mt-5">
+      <div className="mt-4 flex items-center justify-between md:hidden">
         <button
           type="button"
           onClick={prev}
