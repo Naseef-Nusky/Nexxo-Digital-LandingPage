@@ -281,12 +281,12 @@ export default function App() {
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-navy/70" />
-        <div className="container-site relative grid gap-10 lg:grid-cols-[0.9fr_1.2fr] lg:items-center lg:gap-16">
+        <div className="container-site relative grid gap-6 lg:grid-cols-[0.9fr_1.2fr] lg:items-center lg:gap-16">
           <div>
-            <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
+            <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
               Let’s Build Something Great
             </h2>
-            <p className="mt-5 text-xl leading-relaxed text-white/70 md:text-2xl">
+            <p className="mt-3 text-base leading-relaxed text-white/70 sm:mt-5 sm:text-xl md:text-2xl">
               Tell us a little about your project and we’ll get back to you.
             </p>
             <div className="mt-8 hidden h-px w-24 bg-gradient-to-r from-cyan to-blue lg:block" />
