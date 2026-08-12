@@ -19,7 +19,7 @@ function useVisibleCount() {
 }
 
 const navBtnClass =
-  'flex h-11 w-11 items-center justify-center rounded-full border border-white/30 bg-transparent text-white backdrop-blur-[2px] transition hover:border-cyan hover:bg-white/10 hover:text-cyan disabled:cursor-not-allowed disabled:opacity-35'
+  'flex h-9 w-9 items-center justify-center rounded-full border border-white/30 bg-transparent text-white backdrop-blur-[2px] transition hover:border-cyan hover:bg-white/10 hover:text-cyan disabled:cursor-not-allowed disabled:opacity-35 sm:h-11 sm:w-11'
 
 const AUTO_MS = 4000
 
@@ -89,44 +89,10 @@ export default function PackageSlider({ packages }) {
 
   return (
     <div
-      className="relative mt-12 px-2 sm:px-4 md:px-6"
+      className="relative mt-8 sm:mt-12"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      <button
-        type="button"
-        onClick={prev}
-        aria-label="Previous packages"
-        className={`${navBtnClass} absolute top-1/2 left-0 z-20 -translate-y-1/2 sm:left-1`}
-      >
-        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
-          <path
-            d="M15 6 9 12l6 6"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </button>
-
-      <button
-        type="button"
-        onClick={next}
-        aria-label="Next packages"
-        className={`${navBtnClass} absolute top-1/2 right-0 z-20 -translate-y-1/2 sm:right-1`}
-      >
-        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
-          <path
-            d="m9 6 6 6-6 6"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </button>
-
       <div
         ref={containerRef}
         className="touch-pan-y overflow-hidden"
@@ -162,7 +128,7 @@ export default function PackageSlider({ packages }) {
           {packages.map((pkg) => (
             <div
               key={pkg.name}
-              className="box-border shrink-0 px-1.5 select-none sm:px-2"
+              className="box-border shrink-0 px-0.5 select-none sm:px-2"
               style={{ width: `${slidePercent}%`, flex: `0 0 ${slidePercent}%` }}
             >
               <PackageCard
@@ -172,6 +138,42 @@ export default function PackageSlider({ packages }) {
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="mt-4 flex items-center justify-between px-0 sm:mt-5">
+        <button
+          type="button"
+          onClick={prev}
+          aria-label="Previous packages"
+          className={navBtnClass}
+        >
+          <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
+            <path
+              d="M15 6 9 12l6 6"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+
+        <button
+          type="button"
+          onClick={next}
+          aria-label="Next packages"
+          className={navBtnClass}
+        >
+          <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
+            <path
+              d="m9 6 6 6-6 6"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
       </div>
     </div>
   )

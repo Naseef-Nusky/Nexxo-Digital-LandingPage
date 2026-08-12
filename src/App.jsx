@@ -38,7 +38,7 @@ export default function App() {
               Expert Website{' '}
               <span className="whitespace-nowrap">Design &amp; Development</span>
             </h1>
-            <p className="mt-4 max-w-xl text-lg leading-relaxed text-white/85 sm:mt-6 sm:text-xl md:text-2xl">
+            <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/85 sm:mt-6 sm:text-xl md:text-2xl">
               Websites built to make your business look credible,
               <br className="sm:hidden" /> perform better and generate more
               enquiries.
@@ -226,7 +226,7 @@ export default function App() {
           aria-hidden="true"
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-ink/75" />
+        <div className="absolute inset-0 bg-ink/40 md:bg-ink/65" />
         <div className="container-prose relative text-center">
           <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
             Your Website. Your Brand. Built Properly.
