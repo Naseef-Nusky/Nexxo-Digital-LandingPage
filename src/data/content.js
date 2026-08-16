@@ -63,7 +63,7 @@ export const websitePackages = [
       'Bespoke page requirements',
       'Premium UI/UX design',
       'Custom functionality',
-      'WordPress or custom development',
+      'Custom development',
       'Payment integration where required',
       'Dedicated project management',
     ],

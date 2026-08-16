@@ -19,6 +19,11 @@ const initialValues = {
   project: '',
 }
 
+const API_URL = (import.meta.env.VITE_API_URL || 'http://localhost:5050').replace(
+  /\/$/,
+  ''
+)
+
 function fieldClass(hasError) {
   return `${baseFieldClass} ${hasError ? errorFieldClass : okFieldClass}`
 }
@@ -87,6 +92,8 @@ export default function QuoteForm() {
   const [errors, setErrors] = useState({})
   const [touched, setTouched] = useState({})
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState('')
 
   function updateField(name, value) {
     setValues((current) => ({ ...current, [name]: value }))
@@ -113,8 +120,9 @@ export default function QuoteForm() {
     })
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
+    setSubmitError('')
     const nextErrors = validate(values)
     setErrors(nextErrors)
     setTouched({
@@ -133,7 +141,41 @@ export default function QuoteForm() {
       return
     }
 
-    setSubmitted(true)
+    setSubmitting(true)
+
+    try {
+      const response = await fetch(`${API_URL}/api/quote`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: values.name.trim(),
+          business: values.business.trim(),
+          email: values.email.trim(),
+          telephone: values.phone.trim(),
+          need: values.type,
+          project: values.project.trim(),
+          source: 'landing',
+        }),
+      })
+
+      const result = await response.json().catch(() => ({}))
+
+      if (!response.ok || !result.ok) {
+        const message =
+          result.error ||
+          (Array.isArray(result.errors) ? result.errors.join(' ') : null) ||
+          'Unable to send your request. Please try again.'
+        throw new Error(message)
+      }
+
+      setSubmitted(true)
+    } catch (err) {
+      setSubmitError(
+        err.message || 'Unable to send your request. Please try again.'
+      )
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   if (submitted) {
@@ -269,11 +311,18 @@ export default function QuoteForm() {
         <FieldError message={errors.project} />
       </label>
 
+      {submitError ? (
+        <p className="mt-4 text-sm text-red-300" role="alert">
+          {submitError}
+        </p>
+      ) : null}
+
       <button
         type="submit"
-        className="btn-brand mt-5 inline-flex w-full items-center justify-center rounded-full px-6 py-3 text-sm font-bold sm:mt-7 sm:px-7 sm:py-4 sm:text-base md:w-auto"
+        disabled={submitting}
+        className="btn-brand mt-5 inline-flex w-full items-center justify-center rounded-full px-6 py-3 text-sm font-bold disabled:cursor-not-allowed disabled:opacity-70 sm:mt-7 sm:px-7 sm:py-4 sm:text-base md:w-auto"
       >
-        Request a Quote
+        {submitting ? 'Sending…' : 'Request a Quote'}
       </button>
     </form>
   )
