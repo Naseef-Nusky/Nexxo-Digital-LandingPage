@@ -69,10 +69,8 @@ function validate(values) {
     errors.type = 'Please select a website type.'
   }
 
-  if (!project) {
-    errors.project = 'Please tell us about your project.'
-  } else if (project.length < 20) {
-    errors.project = 'Please add a bit more detail (at least 20 characters).'
+  if (project && project.length > 5000) {
+    errors.project = 'Project details are too long.'
   }
 
   return errors
@@ -169,6 +167,9 @@ export default function QuoteForm() {
       }
 
       setSubmitted(true)
+      window.setTimeout(() => {
+        window.location.reload()
+      }, 2000)
     } catch (err) {
       setSubmitError(
         err.message || 'Unable to send your request. Please try again.'
@@ -298,7 +299,8 @@ export default function QuoteForm() {
       </label>
 
       <label className="mt-3 block text-sm font-medium text-white/80 sm:mt-5 sm:text-base">
-        Tell us about your project <span className="text-cyan">*</span>
+        Tell us about your project{' '}
+        <span className="text-white/40">(optional)</span>
         <textarea
           name="project"
           rows={4}

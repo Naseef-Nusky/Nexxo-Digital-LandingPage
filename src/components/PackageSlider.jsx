@@ -26,6 +26,7 @@ const AUTO_MS = 4000
 export default function PackageSlider({ packages }) {
   const visible = useVisibleCount()
   const maxIndex = Math.max(0, packages.length - visible)
+  const canSlide = maxIndex > 0
   const [index, setIndex] = useState(0)
   const [dragOffset, setDragOffset] = useState(0)
   const [isDragging, setIsDragging] = useState(false)
@@ -41,19 +42,26 @@ export default function PackageSlider({ packages }) {
   }, [maxIndex])
 
   useEffect(() => {
-    if (paused || isDragging || maxIndex === 0) return undefined
+    if (!canSlide || paused || isDragging) return undefined
 
     const id = window.setInterval(() => {
       setIndex((i) => (i >= maxIndex ? 0 : i + 1))
     }, AUTO_MS)
 
     return () => window.clearInterval(id)
-  }, [paused, isDragging, maxIndex])
+  }, [canSlide, paused, isDragging, maxIndex])
 
-  const prev = () => setIndex((i) => (i <= 0 ? maxIndex : i - 1))
-  const next = () => setIndex((i) => (i >= maxIndex ? 0 : i + 1))
+  const prev = () => {
+    if (!canSlide) return
+    setIndex((i) => (i <= 0 ? maxIndex : i - 1))
+  }
+  const next = () => {
+    if (!canSlide) return
+    setIndex((i) => (i >= maxIndex ? 0 : i + 1))
+  }
 
   const onPointerDown = (clientX) => {
+    if (!canSlide) return
     dragging.current = true
     setIsDragging(true)
     startX.current = clientX
@@ -89,57 +97,64 @@ export default function PackageSlider({ packages }) {
 
   return (
     <div
-      className="relative mt-8 sm:mt-12 md:px-12"
+      className={`relative mt-8 sm:mt-12 ${canSlide ? 'md:px-12' : ''}`}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      <button
-        type="button"
-        onClick={prev}
-        aria-label="Previous packages"
-        className={`${navBtnClass} absolute top-1/2 left-0 z-20 hidden -translate-y-1/2 md:flex`}
-      >
-        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
-          <path
-            d="M15 6 9 12l6 6"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </button>
+      {canSlide ? (
+        <>
+          <button
+            type="button"
+            onClick={prev}
+            aria-label="Previous packages"
+            className={`${navBtnClass} absolute top-1/2 left-0 z-20 hidden -translate-y-1/2 md:flex`}
+          >
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
+              <path
+                d="M15 6 9 12l6 6"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
 
-      <button
-        type="button"
-        onClick={next}
-        aria-label="Next packages"
-        className={`${navBtnClass} absolute top-1/2 right-0 z-20 hidden -translate-y-1/2 md:flex`}
-      >
-        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
-          <path
-            d="m9 6 6 6-6 6"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </button>
+          <button
+            type="button"
+            onClick={next}
+            aria-label="Next packages"
+            className={`${navBtnClass} absolute top-1/2 right-0 z-20 hidden -translate-y-1/2 md:flex`}
+          >
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
+              <path
+                d="m9 6 6 6-6 6"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+        </>
+      ) : null}
 
       <div
         ref={containerRef}
         className="touch-pan-y overflow-hidden"
         onTouchStart={(e) => {
+          if (!canSlide) return
           setPaused(true)
           onPointerDown(e.touches[0].clientX)
         }}
         onTouchMove={(e) => onPointerMove(e.touches[0].clientX)}
         onTouchEnd={() => {
+          if (!canSlide) return
           onPointerUp()
           setPaused(false)
         }}
         onTouchCancel={() => {
+          if (!canSlide) return
           onPointerUp()
           setPaused(false)
         }}
@@ -156,7 +171,7 @@ export default function PackageSlider({ packages }) {
           className={`flex ${isDragging ? '' : 'transition-transform duration-500 ease-out'}`}
           style={{
             transform: `translateX(calc(-${index * slidePercent}% + ${dragPercent}%))`,
-            cursor: isDragging ? 'grabbing' : 'grab',
+            cursor: canSlide ? (isDragging ? 'grabbing' : 'grab') : 'default',
           }}
         >
           {packages.map((pkg) => (
@@ -167,48 +182,50 @@ export default function PackageSlider({ packages }) {
             >
               <PackageCard
                 pkg={pkg}
-                featured={pkg.name === 'Business Website'}
+                featured={Boolean(pkg.popular)}
               />
             </div>
           ))}
         </div>
       </div>
 
-      <div className="mt-4 flex items-center justify-between md:hidden">
-        <button
-          type="button"
-          onClick={prev}
-          aria-label="Previous packages"
-          className={navBtnClass}
-        >
-          <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
-            <path
-              d="M15 6 9 12l6 6"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </button>
+      {canSlide ? (
+        <div className="mt-4 flex items-center justify-between md:hidden">
+          <button
+            type="button"
+            onClick={prev}
+            aria-label="Previous packages"
+            className={navBtnClass}
+          >
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
+              <path
+                d="M15 6 9 12l6 6"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
 
-        <button
-          type="button"
-          onClick={next}
-          aria-label="Next packages"
-          className={navBtnClass}
-        >
-          <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
-            <path
-              d="m9 6 6 6-6 6"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </button>
-      </div>
+          <button
+            type="button"
+            onClick={next}
+            aria-label="Next packages"
+            className={navBtnClass}
+          >
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
+              <path
+                d="m9 6 6 6-6 6"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+      ) : null}
     </div>
   )
 }

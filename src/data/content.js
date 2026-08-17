@@ -1,181 +1,256 @@
+export const hero = {
+  eyebrow: 'NEXXO DIGITAL',
+  title: 'WEBSITES BUILT TO GENERATE MORE ENQUIRIES',
+  subtitle: 'Professional Websites Designed to Turn Visitors Into Customers',
+  lines: [
+    'Your website shouldn’t just look good.',
+    'It should generate business.',
+  ],
+  body: 'At Nexxo Digital, we design and develop high-performance websites built to attract potential customers, build trust and turn more visitors into genuine enquiries.',
+  closing:
+    'Whether you’re starting a new business, replacing an outdated website or simply not getting enough leads from your current site, we’ll build you a website with one clear goal:',
+  punchline: 'MORE ENQUIRIES. MORE CUSTOMERS. MORE BUSINESS.',
+}
+
+export const lookGoodPoints = [
+  {
+    title: 'MODERN DESIGN',
+    text: 'Give potential customers the right first impression.',
+  },
+  {
+    title: 'CONVERSION FOCUSED',
+    text: 'Every page is structured to encourage visitors to take action.',
+  },
+  {
+    title: 'MOBILE RESPONSIVE',
+    text: 'A professional experience across mobile, tablet and desktop.',
+  },
+  {
+    title: 'BUILT FOR GOOGLE',
+    text: 'Strong foundations for SEO and Google Ads campaigns.',
+  },
+]
+
+export const salesToolPoints = [
+  'What you do',
+  'How you can help them',
+  'Why they should choose you',
+  'What they should do next',
+]
+
+export const enquiryActions = [
+  'Requesting a quote',
+  'Calling your company',
+  'Completing an enquiry form',
+  'Booking a consultation',
+  'Purchasing your service',
+  'Speaking to your sales team',
+]
+
 export const websitePackages = [
   {
     name: 'Starter Website',
     blurb:
-      'Ideal for start-ups and smaller businesses needing a professional online presence.',
+      'Perfect for smaller businesses that need a professional online presence. A clean, modern website designed to clearly present your business and make it easy for potential customers to contact you.',
     cta: 'Enquire Now',
+    popular: false,
     includes: [
-      'Up to 5 professionally designed pages',
-      'Bespoke website layout',
-      'Mobile-responsive design',
-      'Contact/enquiry form',
-      'Basic on-page SEO structure',
-      'Full website ownership',
-    ],
-  },
-  {
-    name: 'Essential Website',
-    blurb:
-      'For established businesses needing more flexibility and control.',
-    cta: 'Enquire Now',
-    includes: [
-      'Up to 5 professionally designed pages',
-      'Bespoke responsive design',
-      'Content management system',
+      'Professional custom design',
+      'Mobile-responsive website',
+      'Clear enquiry-focused layout',
       'Contact and enquiry forms',
-      'Social media integration',
-      'Full website ownership',
+      'Core service information',
+      'Fast-loading pages',
+      'SEO-friendly foundations',
+      'Calls to action throughout',
+      'Professional launch setup',
     ],
   },
   {
     name: 'Business Website',
     blurb:
-      'Built to generate enquiries and showcase multiple services.',
+      'Built for established businesses that want to generate more enquiries online. A larger, conversion-focused website designed around your services, target customers and growth objectives.',
     cta: 'Enquire Now',
+    popular: true,
     includes: [
-      '5–10 bespoke pages',
-      'Custom website design',
-      'Content management system',
-      'Service and landing pages',
-      'Booking or appointment integrations',
-      'Conversion-focused calls-to-action',
+      'Everything in the Starter Website',
+      'Additional service pages',
+      'Conversion-focused page structure',
+      'Stronger enquiry funnels',
+      'Bespoke calls to action',
+      'Advanced website functionality',
+      'SEO-ready service structure',
+      'Google Ads landing-page compatibility',
+      'Enhanced lead-generation features',
+      'Professional content structure',
     ],
   },
   {
-    name: 'Corporate Website',
+    name: 'Growth Website',
     blurb:
-      'For larger companies needing a polished, advanced platform.',
+      'For businesses serious about turning their website into a lead-generation platform. A comprehensive website designed to support SEO, PPC and long-term digital growth.',
     cta: 'Enquire Now',
+    popular: false,
     includes: [
-      '10–20 bespoke pages',
-      'Premium custom design',
-      'Custom website development',
-      'Interactive website elements',
-      'Booking and scheduling integrations',
-      'Dedicated project management',
-    ],
-  },
-  {
-    name: 'Bespoke Website',
-    blurb: 'Fully tailored for businesses with unique requirements.',
-    cta: 'Discuss Your Project',
-    includes: [
-      'Bespoke page requirements',
-      'Premium UI/UX design',
+      'Everything in the Business Website',
+      'Larger bespoke website build',
+      'Multiple service and location pages',
+      'Advanced conversion strategy',
+      'Dedicated lead-generation sections',
       'Custom functionality',
-      'Custom development',
-      'Payment integration where required',
-      'Dedicated project management',
+      'Advanced enquiry forms',
+      'SEO-focused site architecture',
+      'Google Ads campaign landing pages',
+      'Analytics and conversion tracking setup',
+      'Built around future business growth',
     ],
   },
 ]
 
-export const ecommercePackages = [
+export const leadGenPoints = [
   {
-    name: 'E-Commerce Starter',
-    blurb: 'Everything you need to start selling online.',
-    cta: 'Enquire Now',
-    includes: [
-      'Custom e-commerce website design',
-      'Responsive mobile experience',
-      'Product catalogue',
-      'Secure checkout',
-      'Payment gateway integration',
-      'Full ownership',
-    ],
+    title: 'STRONG HEADLINES',
+    text: 'Immediately explain what you do and why somebody should keep reading.',
   },
   {
-    name: 'E-Commerce Professional',
-    blurb:
-      'For growing online stores needing more flexibility.',
-    cta: 'Enquire Now',
-    includes: [
-      'Bespoke e-commerce design',
-      'Product catalogue management',
-      'Secure payment integration',
-      'Order management and tracking',
-      'Content management system',
-      'Full website ownership',
-    ],
+    title: 'CLEAR SERVICE INFORMATION',
+    text: 'Make it easy for potential customers to understand exactly how you can help.',
   },
   {
-    name: 'Bespoke E-Commerce',
-    blurb:
-      'For ambitious brands needing a sophisticated online store.',
-    cta: 'Discuss Your Project',
-    includes: [
-      'Fully bespoke e-commerce website',
-      'Advanced product management',
-      'Custom functionality',
-      'Payment integrations',
-      'Customer accounts',
-      'Dedicated project management',
-    ],
+    title: 'TRUST & CREDIBILITY',
+    text: 'Build confidence through professional presentation, reviews, experience and proof.',
+  },
+  {
+    title: 'STRATEGIC CALLS TO ACTION',
+    text: 'Give visitors clear opportunities to enquire throughout the website.',
+  },
+  {
+    title: 'SIMPLE CUSTOMER JOURNEY',
+    text: 'Remove unnecessary friction and make contacting your business straightforward.',
+  },
+]
+
+export const performPoints = [
+  {
+    title: 'MOBILE RESPONSIVE',
+    text: 'Looks and performs professionally across phones, tablets and desktops.',
+  },
+  {
+    title: 'FAST LOADING',
+    text: 'A faster website creates a better customer experience.',
+  },
+  {
+    title: 'EASY TO NAVIGATE',
+    text: 'Potential customers can quickly find the information they need.',
+  },
+  {
+    title: 'PROFESSIONAL DESIGN',
+    text: 'Modern design that represents your business properly.',
+  },
+  {
+    title: 'CONVERSION FOCUSED',
+    text: 'Built to encourage visitors to contact you.',
+  },
+]
+
+export const modernControls = [
+  'Website performance',
+  'Design',
+  'Functionality',
+  'Page structure',
+  'User experience',
+  'Conversion journeys',
+  'Future development',
+]
+
+export const buildRankGrow = [
+  {
+    title: 'BUILD',
+    subtitle: 'Build a website that converts.',
+    text: 'Create a professional online presence designed to turn visitors into enquiries.',
+  },
+  {
+    title: 'RANK',
+    subtitle: 'Get found on Google.',
+    text: 'Use SEO to increase your visibility when potential customers search for your services.',
+  },
+  {
+    title: 'GROW',
+    subtitle: 'Generate more enquiries.',
+    text: 'Use PPC, SEO and your new website together to drive consistent opportunities for your business.',
   },
 ]
 
 export const whyChoose = [
   {
-    title: 'Design That Builds Trust',
-    text: 'Your website needs to look credible from the moment someone lands on it. We create modern designs that reflect the quality of your business.',
+    title: 'CONVERSION-FOCUSED DESIGN',
+    text: 'We don’t design websites simply to look impressive. We design them to generate enquiries.',
   },
   {
-    title: 'Built to Generate Enquiries',
-    text: 'Good web design isn’t just about looking attractive. We structure pages around clear customer journeys and strong calls-to-action.',
+    title: 'CUSTOM DEVELOPMENT',
+    text: 'Your website is built around your business rather than forcing your company into a generic template.',
   },
   {
-    title: 'Mobile First',
-    text: 'Your website will work seamlessly across smartphones, tablets and desktops.',
+    title: 'PROFESSIONAL DESIGN',
+    text: 'A modern website designed to create trust from the moment somebody arrives.',
   },
   {
-    title: 'Built for Search Engines',
-    text: 'We develop websites using clean structures that give your SEO strategy the right foundation.',
+    title: 'MOBILE OPTIMISED',
+    text: 'A smooth customer experience across all major devices.',
   },
   {
-    title: 'Tailored to Your Business',
-    text: 'We don’t simply change the logo on an off-the-shelf template. Your website is built around your requirements.',
+    title: 'SEO READY',
+    text: 'Strong foundations to support your future Google rankings.',
   },
   {
-    title: 'Complete Ownership',
-    text: 'Once your project is completed, the website belongs to you.',
+    title: 'GOOGLE ADS READY',
+    text: 'Designed to work alongside PPC campaigns and paid website traffic.',
   },
 ]
 
-export const faqs = [
+export const currentSiteIssues = [
+  'Weak headlines',
+  'Outdated design',
+  'Poor mobile experience',
+  'Confusing navigation',
+  'Too much unnecessary information',
+  'Weak calls to action',
+  'Lack of trust',
+  'Difficult enquiry forms',
+]
+
+export const processSteps = [
   {
-    q: 'What is included in your website design service?',
-    a: 'Our website design service can cover everything from planning and page structure through to design, development, mobile optimisation and launch. The exact scope depends on the requirements of your project.',
+    num: '01',
+    title: 'UNDERSTAND',
+    text: 'We learn about your business, your services, your target customers and what you want the website to achieve.',
   },
   {
-    q: 'Will my website be mobile friendly?',
-    a: 'Yes. Every Nexxo Digital website is designed to work across desktop, tablet and mobile devices.',
+    num: '02',
+    title: 'PLAN',
+    text: 'We create the website structure and customer journey around generating enquiries.',
   },
   {
-    q: 'Can you redesign my existing website?',
-    a: 'Yes. We can modernise an existing website while improving its design, usability, structure and conversion journey.',
+    num: '03',
+    title: 'DESIGN',
+    text: 'We design a modern, professional website tailored to your business.',
   },
   {
-    q: 'Do you build e-commerce websites?',
-    a: 'Yes. We create e-commerce websites ranging from smaller online stores through to more advanced bespoke platforms.',
+    num: '04',
+    title: 'DEVELOP',
+    text: 'Your website is built using modern technology with speed, performance and conversion in mind.',
   },
   {
-    q: 'Can you integrate booking or payment systems?',
-    a: 'Yes. Depending on your requirements, we can integrate online payments, bookings, appointments, ordering systems and other third-party functionality.',
-  },
-  {
-    q: 'How much does a website cost?',
-    a: 'Every project is different. Pricing depends on the size of the website, design requirements and functionality required.\n\nEnquire to find out more and we’ll provide a tailored quotation.',
+    num: '05',
+    title: 'LAUNCH',
+    text: 'We test everything and launch your new website ready to start generating business.',
   },
 ]
 
 export const websiteTypes = [
   'Starter Website',
-  'Essential Website',
   'Business Website',
-  'Corporate Website',
-  'Bespoke Website',
-  'E-Commerce Starter',
-  'E-Commerce Professional',
-  'Bespoke E-Commerce',
+  'Growth Website',
+  'Website Redesign',
   'Not sure / Other',
 ]

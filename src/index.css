@@ -1,9 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap");
 @import "tailwindcss";
 
+/* Explicit stacks — avoid broken var(--font-*) references with Tailwind v4 theme fonts */
+:root {
+  --nexxo-display: "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
+  --nexxo-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+}
+
 @theme {
-  --font-display: "Plus Jakarta Sans", sans-serif;
-  --font-body: "Source Sans 3", sans-serif;
+  --font-sans: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
   --color-ink: #000000;
   --color-ink-soft: #0a0a0a;
   --color-navy: #020818;
@@ -14,29 +20,40 @@
   --color-cyan: #00aeef;
 }
 
-html {
-  scroll-behavior: smooth;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--nexxo-body);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    color: #0a0a0a;
+    background: #f2f4f8;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--nexxo-display);
+    letter-spacing: -0.02em;
+  }
 }
 
-body {
-  margin: 0;
-  font-family: var(--font-body);
-  font-size: 1.0625rem;
-  line-height: 1.65;
-  color: #0a0a0a;
-  background: #f2f4f8;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  overflow-x: hidden;
-}
-
-h1,
-h2,
-h3,
-h4,
+/* Utility used across the app — must win over base body font */
 .font-display {
-  font-family: var(--font-display);
-  letter-spacing: -0.02em;
+  font-family: var(--nexxo-display) !important;
+}
+
+.font-body {
+  font-family: var(--nexxo-body) !important;
 }
 
 ::selection {
@@ -52,6 +69,7 @@ h4,
   background-image: linear-gradient(135deg, #00aeef 0%, #0047ff 100%);
   -webkit-background-clip: text;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
   color: transparent;
 }
 

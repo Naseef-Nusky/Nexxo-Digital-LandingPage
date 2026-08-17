@@ -1,3 +1,5 @@
+import { ColorGoogle } from './GoogleText'
+
 export default function PackageCard({ pkg, featured = false }) {
   return (
     <article
@@ -12,7 +14,7 @@ export default function PackageCard({ pkg, featured = false }) {
       {featured && (
         <div className="mb-3 sm:mb-4">
           <span className="rounded-full bg-brand px-3 py-1 text-xs font-bold tracking-wide text-white uppercase">
-            Popular
+            Most Popular
           </span>
         </div>
       )}
@@ -21,10 +23,7 @@ export default function PackageCard({ pkg, featured = false }) {
         {pkg.name}
       </h3>
       <p className="mt-2 text-sm leading-relaxed text-white/70 sm:mt-3 sm:text-base md:text-lg">
-        {pkg.blurb}
-      </p>
-      <p className="mt-3 text-sm font-semibold text-cyan sm:mt-5 sm:text-base">
-        Enquire to find out more
+        <ColorGoogle text={pkg.blurb} />
       </p>
 
       <div className="mt-3 border-t border-white/10 pt-3 sm:mt-5 sm:pt-4">
@@ -50,7 +49,9 @@ export default function PackageCard({ pkg, featured = false }) {
                   />
                 </svg>
               </span>
-              <span>{item}</span>
+              <span>
+                <ColorGoogle text={item} />
+              </span>
             </li>
           ))}
         </ul>
