@@ -58,10 +58,10 @@ export default function App() {
             <p className="font-display text-sm font-semibold tracking-[0.24em] text-cyan uppercase sm:text-base sm:tracking-[0.28em]">
               {hero.eyebrow}
             </p>
-            <h1 className="mt-3 max-w-2xl font-display text-[1.65rem] leading-[1.12] font-extrabold tracking-tight sm:text-4xl md:mt-4 md:text-5xl lg:text-[3.4rem]">
+            <h1 className="mt-3 max-w-xl font-display text-[1.85rem] leading-[1.15] font-extrabold tracking-tight sm:text-5xl md:mt-4 md:text-6xl lg:text-[4.25rem]">
               {hero.title}
             </h1>
-            <p className="mt-4 max-w-xl text-base font-semibold leading-relaxed text-white/90 sm:mt-5 sm:text-xl md:text-2xl">
+            <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/85 sm:mt-6 sm:text-xl md:text-2xl">
               {hero.subtitle}
             </p>
             <div className="mt-8 flex w-full flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">

@@ -1,6 +1,6 @@
 export const hero = {
   eyebrow: 'NEXXO DIGITAL',
-  title: 'WEBSITES BUILT TO GENERATE MORE ENQUIRIES',
+  title: 'Websites Built to Generate More Enquiries',
   subtitle: 'Professional Websites Designed to Turn Visitors Into Customers',
   lines: [
     'Your website shouldn’t just look good.',
