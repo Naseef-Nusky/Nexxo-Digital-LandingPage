@@ -1,5 +1,5 @@
 export const contact = {
-  email: 'hello@nexxodigital.com',
-  phone: '+44 7700 900123',
-  phoneDisplay: '+44 7700 900123',
+  email: 'info@nexxodigital.co.uk',
+  phone: '+447519448987',
+  phoneDisplay: '07519 448987',
 }
