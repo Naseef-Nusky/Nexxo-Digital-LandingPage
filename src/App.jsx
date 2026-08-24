@@ -79,6 +79,31 @@ export default function App() {
         </div>
       </section>
 
+      {/* Contact form after hero */}
+      <section id="quote" className="relative overflow-hidden bg-mist section-space">
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan/40 to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_0%,rgba(0,194,255,0.1),transparent_40%),radial-gradient(circle_at_85%_100%,rgba(0,87,255,0.08),transparent_45%)]" />
+
+        <div className="container-site relative">
+          <div className="mx-auto mb-8 max-w-3xl text-center md:mb-12">
+            <div className="mx-auto mb-5 h-1 w-14 rounded-full bg-brand" />
+            <p className="font-display text-sm font-semibold tracking-[0.2em] text-blue uppercase">
+              Contact
+            </p>
+            <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl md:text-5xl">
+              Let’s Build Something Great
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-slate sm:text-xl">
+              Tell us a little about your project and we’ll get back to you.
+            </p>
+          </div>
+
+          <div className="mx-auto max-w-3xl">
+            <QuoteForm variant="light" />
+          </div>
+        </div>
+      </section>
+
       {/* Hero follow-up */}
       <section className="relative overflow-hidden bg-white section-space">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan/50 to-transparent" />
@@ -821,9 +846,9 @@ export default function App() {
         </div>
       </section>
 
-      {/* Quote */}
+      {/* Quote (bottom) */}
       <section
-        id="quote"
+        id="quote-bottom"
         className="relative overflow-hidden bg-navy section-space text-white"
       >
         <img
