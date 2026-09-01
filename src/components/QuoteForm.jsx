@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { websiteTypes } from '../data/content'
 
 const initialValues = {
@@ -76,10 +77,10 @@ function FieldError({ message, dark }) {
 }
 
 export default function QuoteForm({ variant = 'dark' }) {
+  const navigate = useNavigate()
   const [values, setValues] = useState(initialValues)
   const [errors, setErrors] = useState({})
   const [touched, setTouched] = useState({})
-  const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState('')
   const dark = variant === 'dark'
@@ -146,8 +147,9 @@ export default function QuoteForm({ variant = 'dark' }) {
 
     if (Object.keys(nextErrors).length > 0) {
       const firstError = Object.keys(nextErrors)[0]
-      const el = document.querySelector(`[name="${firstError}"]`)
+      const el = e.currentTarget.querySelector(`[name="${firstError}"]`)
       el?.focus()
+      el?.scrollIntoView({ behavior: 'smooth', block: 'center' })
       return
     }
 
@@ -178,10 +180,7 @@ export default function QuoteForm({ variant = 'dark' }) {
         throw new Error(message)
       }
 
-      setSubmitted(true)
-      window.setTimeout(() => {
-        window.location.reload()
-      }, 2000)
+      navigate('/thanks')
     } catch (err) {
       setSubmitError(
         err.message || 'Unable to send your request. Please try again.'
@@ -189,43 +188,6 @@ export default function QuoteForm({ variant = 'dark' }) {
     } finally {
       setSubmitting(false)
     }
-  }
-
-  if (submitted) {
-    return (
-      <div
-        className={
-          dark
-            ? 'rounded-2xl border border-cyan/30 bg-white/5 p-5 text-center backdrop-blur-sm sm:p-8 md:p-10'
-            : 'rounded-2xl border border-ink/10 bg-white p-5 text-center shadow-[0_18px_40px_-28px_rgba(5,7,13,0.18)] sm:p-8 md:p-10'
-        }
-      >
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-brand">
-          <svg viewBox="0 0 24 24" className="h-7 w-7 text-white" fill="none" aria-hidden="true">
-            <path
-              d="M5 13l4 4L19 7"
-              stroke="currentColor"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </div>
-        <h3
-          className={`mt-5 font-display text-3xl font-bold ${
-            dark ? 'text-white' : 'text-ink'
-          }`}
-        >
-          Thank you
-        </h3>
-        <p className={`mt-3 text-lg ${dark ? 'text-white/70' : 'text-slate'}`}>
-          Tell us a little about your project and we’ll get back to you.
-        </p>
-        <p className="mt-2 text-base font-medium text-blue">
-          Your request has been received.
-        </p>
-      </div>
-    )
   }
 
   return (
