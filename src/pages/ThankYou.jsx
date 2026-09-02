@@ -1,9 +1,20 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { contact } from '../data/contact'
 
 export default function ThankYou() {
+  useEffect(() => {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'conversion', {
+        send_to: 'AW-18420637735/dwQMCIqsrescEKfA0s9E',
+        value: 1.0,
+        currency: 'GBP',
+      })
+    }
+  }, [])
+
   return (
     <div className="flex min-h-screen flex-col bg-mist">
       <Header />
